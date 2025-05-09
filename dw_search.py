@@ -50,7 +50,18 @@ enemies = {
 
 }   
 
+enemies_list = list(enemies.keys())
+enemies_list = sorted(enemies_list)
+
+
 ep_search = input("Search a villain: ").lower()
+
+
+
+if ep_search == "view":
+    for i in enemies_list:
+        i = i.title()
+        print(i)
 
 if ep_search in enemies:
     print(f"{ep_search.title()} appears in: {', '.join(enemies[ep_search])}")
