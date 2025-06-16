@@ -114,21 +114,6 @@ enemies = {
     "sea devils": ["Legend of the Sea Devils (2022)"],
     "the toymaker": ["The Giggle (2023)"],
     
-
-    
-
-    
-
-
-    
-
-
-
-
-
-    
-
-    
     
 
 }   
@@ -139,9 +124,9 @@ enemies_list = sorted(enemies_list)
 def main():
 
 
-    ep_search = input("Search a Doctor Who villain: [Type 'View' to see a list of all villains] ").lower()
+    ep_search = input("\nSearch a Doctor Who villain: \n\n[Type 'View abc' to see an alphabetical list of all villains]\n[type 'View popular' to sort all villains by episode count]\n[type 'end' to finish searching]\n\n ").lower()
 
-    if ep_search == "view":
+    if ep_search == "view abc":
 
         for i in enemies_list:
             ep_count = len(enemies[i])     # use lowercase key
@@ -172,6 +157,22 @@ def main():
             print(" ")
             print(" ")
             main()
+
+    
+    elif ep_search == "view popular":
+        sorted_enemies = sorted(enemies.items(), key=lambda x: len(x[1]), reverse=True)
+        print("\nVillains sorted by episode count:\n")
+        for enemy, episodes in sorted_enemies:
+            ep_count = len(episodes)
+            print(f"{enemy.title()} - {ep_count} episode{'s' if ep_count != 1 else ''}")
+        print(" ")
+        print(" ")
+        main()
+    
+    elif ep_search == "end":
+        print("Thank you for trying out the Docor Who Villain Search!")
+        
+    
     else:
         print("Enemy not found.")
         main()
